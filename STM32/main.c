@@ -185,8 +185,6 @@ int main(){
 
     // delay (could and propably should be longer)
     for(int i = 0; i < 500000000; i++);
-	
-    // here we use a multimeter to check the output frequenecy and duty sycle
 
     // disabling the timer and the output of pwm signal
     TIM1->CR1 &= ~0x1;
