@@ -3,6 +3,7 @@
    I'm using stm32l412k8t6
    
    The files that are needed for compiling and linking
+   These files are found in the stm32cube package which can be downloaded from STMicroelectronics's web site
    
    cmsis_compiler.h
    cmsis_gcc.h
@@ -15,11 +16,22 @@
    STM32L412K8T6_FLASH.ld
    system_stm32l4xx.c
    system_stm32l4xx.h
+
+   How peripherals are accessed
+
+   #define PERIPH_BASE ((uint32_t)0x40000000)
+   #define AHBPERIPH_BASE (PERIPH_BASE + 0x00020000)
+   #define RCC_BASE (AHBPERIPH_BASE + 0x00001000)
+   #define RCC ((RCC_TypeDef *) RCC_BASE)
    
-   These files are found in the stm32cube package which can be downloaded from STMicroelectronics's web site
+   #define RCC ((RCC_TypeDef *) RCC_BASE)
+   
+   RCC->AHB2ENR != .....
+   
+   struct pointer to a struct "object" at a fixed addres in memory
 */
 
-// sysbolic names for the registers
+// symbolic names for the peripheral registers that are located in memory (they are called registers)
 #include "stm32l412xx.h"
 
 int main(){
